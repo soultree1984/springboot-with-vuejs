@@ -44,6 +44,13 @@
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <optional>true</optional>
+
+            <!--
+                <optional>true</optional>
+                혹시라도 다른 프로젝트에서 이 프로젝트를 참고할때 Lombok 의존성이
+                따라 들어가지 않도록 하는 옵션.
+             -->
+
         </dependency>
 
         <dependency>
@@ -55,12 +62,25 @@
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
             <!--<scope>test</scope>-->
+            <!--
+                postgresql, h2 가 두개가 모두 있을 경우
+                runtime 시 별다른 DB 설정이 없는 경우 h2(인메모리)를 쓰도록 되어있는데,
+                <scope>test</scope> 를 주면 test에서만 사용한다고 했으므로
+                runtime시에 오류가 발생한다. 따라서 DB설정이 없다면 test scope은
+                주석처리해야 오류가 안난다.
+             -->
         </dependency>
 
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.modelmapper</groupId>
+            <artifactId>modelmapper</artifactId>
+            <version>2.3.1</version>
         </dependency>
 
     </dependencies>
