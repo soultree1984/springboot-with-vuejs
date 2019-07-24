@@ -1,0 +1,17 @@
+Intelli J 단축키 정리
+
+불필요한 import 제거. ( 사용하지 않는 import )
+	- Ctrl + Alt + O
+
+Junit 테스트 클래스 만들기
+	- Ctrl+ + Shift + T
+
+Java 클래스 실행
+	- Shift + F10
+
+리팩토링 단축키
+	- Ctrl + Alt + V
+	- 블록 지정하고 실행하면 변수 자동 생성 됨.
+
+블록 이동 단축키
+	- 블록 지정뒤 Shift + Alt 하고 방향키
