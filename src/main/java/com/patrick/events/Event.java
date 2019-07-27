@@ -1,5 +1,8 @@
 package com.patrick.events;
 
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.patrick.accounts.Account;
+import com.patrick.accounts.AccountSerializer;
 import lombok.*;
 
 import javax.persistence.*;
@@ -25,7 +28,21 @@ public class Event {
     private boolean offline;
     private boolean free;
 
-    @Enumerated(EnumType.STRING)
+
+    /*
+        AccountSerializer를 @JsonComponent 로 등록하면
+        Account 를 내려줄때 무조건 ID만 보여지게 되는데,
+        만약다른 페이지에서는 Account의 다른 정보가
+        보여질 필요가 있다면 Event하위에서 세팅 할때만
+        선택적으로 Serialize 하고싶다면
+        @JsonSerialize(using = AccountSerializer.class)
+        로 선언해준다.
+    */
+    @ManyToOne
+    @JsonSerialize(using = AccountSerializer.class)
+    private Account manager;
+
+
 
     //@Enumerated(EnumType.ORDINAL)
     /*
@@ -33,6 +50,7 @@ public class Event {
         나중에라도 값의 순서가 바뀌었을때 오류가 발생 할 수 있기 때문에
         EnumType.STRING 으로 지정해서 값 그대로 저장되도록 옵션을 주는게 좋다.
     */
+    @Enumerated(EnumType.STRING)
     private EventStatus eventStatus = EventStatus.DRAFT;
 
     public void update() {

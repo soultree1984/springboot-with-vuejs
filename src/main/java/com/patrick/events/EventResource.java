@@ -23,7 +23,7 @@ public class EventResource extends ResourceSupport {
 */
 
 /*
-ResourceSupport 하위 Resource getter 부분에 이미 @JsonUnwrapped
+ResourceSupport 하위 Resource 클래스의 getter 부분에 이미 @JsonUnwrapped
 가 있기 때문에 @JsonUnwrapped를 별도로 붙여줄 필요없이 그냥 된다.
 */
 public class EventResource extends Resource<Event> {
